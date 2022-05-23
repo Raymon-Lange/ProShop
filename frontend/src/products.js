@@ -17,7 +17,7 @@ const products = [
     name: 'Big Bertha B21 Drivers',
     image: '/images/BigBertha.png',
     description:
-      'You could be hitting the ball farther, and that’s why we\’re bringing out the new Big Bertha B21. It\’s a new formula for distance, built to take the big miss out of your game and invite you back to the fairway.',
+      'You could be hitting the ball farther, and that’s why we’re bringing out the new Big Bertha B21. It’s a new formula for distance, built to take the big miss out of your game and invite you back to the fairway.',
     brand: 'Callaway',
     category: 'Driver',
     price: 349.99,
@@ -56,7 +56,7 @@ const products = [
     name: 'TOUR RESPONSE',
     image: '/images/tourResponse.jpg',
     description:
-      'A Tour-quality golf ball with a 100% cast urethane cover, designed for high performance at a lower price. It\’s soft feel and more spin, with less spend.',
+      'A Tour-quality golf ball with a 100% cast urethane cover, designed for high performance at a lower price. It’s soft feel and more spin, with less spend.',
     brand: 'Taylor Made',
     category: 'Balls',
     price: 39.99,
