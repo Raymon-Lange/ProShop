@@ -5,6 +5,8 @@
   "main": "server.js",
   "type": "module",
   "dependencies": {
+    "colors": "^1.4.0",
+    "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "history": "^4.10.1",
@@ -13,6 +15,8 @@
     "js-tokens": "^4.0.0",
     "loose-envify": "^1.4.0",
     "mini-create-react-context": "^0.4.1",
+    "mongoose": "^6.3.4",
+    "nodemon": "^2.0.16",
     "object-assign": "^4.1.1",
     "path-to-regexp": "^1.8.0",
     "prop-types": "^15.8.1",
