@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Rogue ST MAX',
     image: '/images/Rogue.png',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Big Bertha B21 Drivers',
     image: '/images/BigBertha.png',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'STEALTH',
     image: '/images/Steath.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'TP5 GOLF BALLS',
     image: '/images/TP5.jpg',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'TOUR RESPONSE',
     image: '/images/tourResponse.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: 'Chrome Soft',
     image: '/images/chrome.png',
     description:
