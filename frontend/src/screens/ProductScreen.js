@@ -9,14 +9,14 @@ import Loader from '../components/Loader'
 
 const ProductScreen = () => {
   const dispatch = useDispatch()
-  const { productId } = useParams();
+  const productId  = useParams();
 
   const productDetails = useSelector(state => state.productDetails)
   const { loading, error, product } = productDetails
 
 
   useEffect(() => {
-    dispatch(listProductDetails(productId))
+    dispatch(listProductDetails(productId.id))
 
   }, [dispatch, productId]) //defauting to no depenacys
 
