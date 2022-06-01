@@ -60,14 +60,9 @@ const productSchema = mongoose.Schema({
         required: [true, 'Please add a price'],
         default: 0
     },
-    count: {
+    countInStock: {
         type: Number,
-        required: [true, 'Please add a price'],
-        default: 0
-    },
-    stock: {
-        type: Number,
-        required: [true, 'Please add a price'],
+        required: [true, 'Please add a stock count'],
         default: 0
     },
 },
