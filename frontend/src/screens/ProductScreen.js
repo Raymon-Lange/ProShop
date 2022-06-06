@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import { listProductDetails } from '../actions/productActions'
@@ -12,15 +12,19 @@ const ProductScreen = () => {
 
   const dispatch = useDispatch()
   const productId  = useParams()
+  const history = useNavigate()
 
   const productDetails = useSelector(state => state.productDetails)
   const { loading, error, product } = productDetails
-
 
   useEffect(() => {
     dispatch(listProductDetails(productId.id))
 
   }, [dispatch, productId]) //defauting to no depenacys
+
+  const addToCartHandler = () => {
+    history(`/cart/${productId.id}?qty=${qty}`)
+  }
 
   return (
     <>
@@ -89,6 +93,7 @@ const ProductScreen = () => {
                     className='btn-block'
                     type='button'
                     disabled={product.countInStock === 0}
+                    onClick={addToCartHandler}
                   >
                     Add To Cart
                   </Button>
