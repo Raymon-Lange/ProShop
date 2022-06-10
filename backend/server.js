@@ -3,15 +3,19 @@ import colors from 'colors'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productsRoutes.js'
+import userRoutes from  './routes/userRoutes.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 
 //Set up and init data and connection
 dotenv.config()
 connectDB()
 const app = express()
+app.use(express.json())
 
 //Defining the end points 
 app.use("/api/products", productRoutes)
+app.use("/api/users", userRoutes)
+
 
 //Setting up middleware helpers 
 app.use(errorHandler)
