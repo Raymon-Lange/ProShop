@@ -36,7 +36,7 @@ const LoginScreen = () => {
       <h1>Sign In</h1>
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
-      <Form onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler} className='py-3'>
         <Form.Group controlId='email'>
           <Form.Label>Email Address</Form.Label>
           <Form.Control
@@ -47,7 +47,7 @@ const LoginScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='password'>
+        <Form.Group controlId='password' className='py-3'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
@@ -57,7 +57,7 @@ const LoginScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button className='py-3' type='submit' variant='primary'>
           Sign In
         </Button>
       </Form>
