@@ -51,6 +51,13 @@ export const register = (name, email, password) => async (dispatch ) =>  {
             type: USER_REG_SUCCESS, 
             payload: data
         })
+        //so the user doesn't have to log in right after creating an account. 
+        dispatch({
+            type: USER_LOGIN_SUCCESS, 
+            payload: data
+        })
+
+        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error){
         dispatch({type: USER_REG_FAIL, payload : error.response && error.response.data.message 
