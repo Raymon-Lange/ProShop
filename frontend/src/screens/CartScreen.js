@@ -15,6 +15,7 @@ const CartScreen = () => {
 
     //allow us to search the the URL
     const location = useLocation()
+    const history = useNavigate()
     
     //Step qty comes in as qty=1, splitting to get the value 
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
@@ -27,7 +28,6 @@ const CartScreen = () => {
     const cart = useSelector(state => state.cart)
     const  {cartItems } = cart
 
-
     useEffect( () => {
         if (productId){
             dispatch(addToCart(productId, qty))
@@ -37,7 +37,10 @@ const CartScreen = () => {
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
     }
-
+    
+    const checkoutHandler = () => {
+      history('/login/?redirect=/shipping')
+    }
 
     return (
         <Row>
@@ -109,7 +112,7 @@ const CartScreen = () => {
                     type='button'
                     className='btn-block'
                     disabled={cartItems.length === 0}
-                    //onClick={checkoutHandler}
+                    onClick={checkoutHandler}
                   >
                     Proceed To Checkout
                   </Button>
