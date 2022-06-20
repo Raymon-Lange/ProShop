@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productsRoutes.js'
 import userRoutes from  './routes/userRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 
 //Set up and init data and connection
@@ -15,6 +16,7 @@ app.use(express.json())
 //Defining the end points 
 app.use("/api/products", productRoutes)
 app.use("/api/users", userRoutes)
+app.use("/api/orders", orderRoutes)
 
 
 //Setting up middleware helpers 
