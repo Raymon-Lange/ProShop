@@ -109,6 +109,20 @@ const getUser = asyncHandler(async (req, res) => {
     }
   })
 
+// @desc    Get user profile
+// @route   GET /api/users
+// @access  Private/admin
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({})
+
+  if (users) {
+    res.json(users)
+  } else {
+    res.status(404)
+    throw new Error('No users found')
+  }
+})
+
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '30d',})
 }
@@ -118,4 +132,5 @@ export {
     loginUser,
     getUser,
     updateUser,
+    getUsers,
 }
