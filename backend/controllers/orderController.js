@@ -61,7 +61,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
   if (order) {
     order.isPaid = true;
-    order.paidat = Date.now()
+    order.paidAt = Date.now()
     order.paymentResult = {
       id: req.body.id,
       status: req.body.status,
@@ -80,8 +80,25 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc Gets the order details for a user who is logged in 
+// @route Get /api/orders/myorders
+// @access Public
+const getOrderByUserId = asyncHandler(async (req, res) => {
+  // gets the orders for the user who is logged in 
+  const order = await Order.find({user: req.user._id})
+
+  if (order) {
+    res.json(order)
+  } else {
+    res.status(404)
+    throw new Error('Order not found')
+  }
+})
+
+
 export {
   createOrder,
   getOrderById,
   updateOrderToPaid,
+  getOrderByUserId,
 }
