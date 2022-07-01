@@ -1,4 +1,4 @@
-import { USER_DETAILS_RESET, USER_DETAIL_FAIL , USER_DETAIL_REQUEST, USER_DETAIL_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from '../constants/usersContants'
+import { USER_DETAILS_RESET, USER_DETAIL_FAIL , USER_DETAIL_REQUEST, USER_DETAIL_SUCCESS, USER_LIST_REQUEST, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from '../constants/usersContants'
 import { USER_REG_FAIL, USER_REG_REQUEST, USER_REG_SUCCESS } from "../constants/usersContants"
 
 export const userLoginReducer = (state = { products: [] }, action) => {
@@ -54,6 +54,19 @@ export const userDetailReducer = (state = { user: {} }, action) => {
             return { loading: false, error: action.payload }
         case USER_DETAILS_RESET:
             return {user: {}}
+        default:
+            return state
+    }
+}
+
+export const userListReducer = (state = { users: {} }, action) => {
+    switch (action.type) {
+        case USER_LIST_REQUEST:
+            return {...state,  loading: true}
+        case USER_DETAIL_SUCCESS:
+            return { loading: false, users: action.payload }
+        case USER_DETAIL_FAIL:
+            return { loading: false, error: action.payload }
         default:
             return state
     }
