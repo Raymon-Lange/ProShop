@@ -21,6 +21,7 @@ const UserListScreen = () => {
   const { success: successDelete } = userDelete
 
   useEffect(() => {
+    dispatch(listUsers())
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers())
     } else {
@@ -53,7 +54,7 @@ const UserListScreen = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {users && users.map((user)  => (
               <tr key={user._id}>
                 <td>{user._id}</td>
                 <td>{user.name}</td>

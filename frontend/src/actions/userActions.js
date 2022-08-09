@@ -132,11 +132,13 @@ export const userDetail = (id) => async (dispatch, getState ) =>  {
 
 }
 
-export const listUsers = (id) => async (dispatch, getState ) =>  {
+export const listUsers = () => async (dispatch, getState ) =>  {
     try {
         dispatch({
             type: USER_LIST_REQUEST
         })
+
+        console.log("requesting users")
 
         const {userLogin: {userInfo}} = getState()
 
@@ -173,7 +175,7 @@ export const deleteUser = (id) => async (dispatch, getState ) =>  {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        const {data} = await axios.get(`/api/users/`, config)
+        const {data} = await axios.get(`/api/users`, config)
 
         dispatch({
             type: USER_LIST_SUCCESS, 
