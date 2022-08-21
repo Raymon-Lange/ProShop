@@ -25,10 +25,10 @@ const UserListScreen = () => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers())
     } else {
-      history.push('/login')
+      history('/login')
     }
     
-  }, [dispatch, history, successDelete, userInfo])
+  }, [dispatch, history, successDelete, userInfo]) // if successDelete chance this will refresth the page
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
