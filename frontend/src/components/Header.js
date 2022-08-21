@@ -1,17 +1,20 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
 import { useSelector, useDispatch } from "react-redux"
+import {  useNavigate } from "react-router-dom"
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../actions/userActions'
 
 const Header = () => {
 
   const dispatch = useDispatch()
+  const navigate =  useNavigate()
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
   const logoutHandler = () => {
     dispatch(logout())
+    navigate("/")
   }
 
   return (

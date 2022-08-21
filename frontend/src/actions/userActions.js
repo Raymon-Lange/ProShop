@@ -118,8 +118,7 @@ export const userDetail = (id) => async (dispatch, getState ) =>  {
             }
         }
 
-        console.log("success")
-        const {data} = await axios.get(`/api/users/`, config)
+        const {data} = await axios.get('/api/users/profile', config)
 
         dispatch({
             type: USER_DETAIL_SUCCESS, 
@@ -130,7 +129,6 @@ export const userDetail = (id) => async (dispatch, getState ) =>  {
         dispatch({type: USER_DETAIL_FAIL, payload : error.response && error.response.data.message 
             ? error.response.data.message : error.message,})
     }
-
 }
 
 export const listUsers = () => async (dispatch, getState ) =>  {
