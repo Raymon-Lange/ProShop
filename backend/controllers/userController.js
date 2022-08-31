@@ -145,6 +145,44 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 })
 
+// @desc    Get user by id 
+// @route   GET /api/users/:id
+// @access  Private/Admin
+const getUserId = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).select('-password')
+
+  if (user) {
+    res.json(user)
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
+  // @desc    Update user profile by id 
+  // @route   PUT /api/users/:id
+  // @access  Private/Admin
+  const updateUserbyId = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id)
+    if (user) {
+      user.name = req.body.name || user.name
+      user.email = req.body.email || user.email
+      user.isAdmin = req.body.isAdmin === true ? true:false// you don't need the or because you'll never be able to set the flag to False ;) 
+  
+      const updatedUser = await user.save()
+  
+      res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin
+      })
+    } else {
+      res.status(404)
+      throw new Error('User not found')
+    }
+  })
+
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '30d',})
 }
@@ -156,4 +194,6 @@ export {
     updateUser,
     getUsers,
     deleteUser,
+    getUserId,
+    updateUserbyId,
 }
