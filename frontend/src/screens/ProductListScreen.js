@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
-import { listProducts,  deleteProduct} from '../actions/productActions'
+import { listProducts,  deleteProduct, createProduct} from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+import { FaRegArrowAltCircleDown } from 'react-icons/fa'
 
 const ProductListScreen = () => {
     const dispatch = useDispatch()
@@ -18,27 +19,39 @@ const ProductListScreen = () => {
     const productList = useSelector((state) => state.productList)
     const { loading, error, products, page, pages } = productList
 
+    const productDelete = useSelector((state) => state.productDelete)
+    const { loading: loadingDelete, error: errorDelete, success: successDelete,} = productDelete
+
+    const productCreate = useSelector((state) => state.productCreate)
+    const{  loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct,} = productCreate
+
+
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
     useEffect(() => {
+        
+
         if (!userInfo || !userInfo.isAdmin) {
             history.push('/login')
         }
-        /*
+
+        dispatch(listProducts())
+        
         if (successCreate) {
-            history.push(`/admin/product/${createdProduct._id}/edit`)
+            history(`/admin/product/${createdProduct._id}/edit`)
+            dispatch({ type: PRODUCT_CREATE_RESET })
         } else {
-            dispatch(listProducts('', pageNumber))
+            dispatch(listProducts())
         }
-        */
+        
     }, [
         dispatch,
         history,
         userInfo,
-        //successDelete,
-        //successCreate,
-        //createdProduct,
+        successDelete,
+        successCreate,
+        createdProduct,
         pageNumber,
     ])
 
@@ -49,7 +62,19 @@ const ProductListScreen = () => {
     }
 
     const createProductHandler = () => {
-        //dispatch(createProduct())
+        const product = {
+            name: "New Product",
+            image: "/images/Rogue.png",
+            description: "New Product Description",
+            brand: "Brand Name",
+            category: "Product Category",
+            price: 999.99,
+            countInStock: 1
+        }
+
+        console.log(product)
+
+        dispatch(createProduct(product))
     }
 
     return (
